@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Watch</title>
+    <style>
+        .clock{  
+            width:350px;  
+            height: 350px;  
+            border: 6px solid white;  
+            border-radius: 50%;  
+            position: relative;  
+            background: white;  
+            color: #333;
+            
+            animation-name: clock-animation;  
+            animation-iteration-count: infinite;  
+            animation-duration: 8s;  
+        }  
+        @keyframes clock-animation{  
+            0%{  
+                background: #96b3b2;  
+
+
+            }  
+            50%{  
+                background: gray;  
+
+            }  
+
+            75%{  
+                background: #F5FFFA;
+            }  
+
+            100%{
+                background: #96b3b2;
+            }
+
+        }  
+
+        .clock::after{  
+            content: "";  
+            position: absolute;  
+            width: 15px;  
+            height: 15px;  
+            background: #333;  
+            left: 50%;  
+            top: 50%;  
+            transform: translate(-50%,-50%)  ;border-radius: 50%;  
+        }  
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            transform: translateX(-50%);
+            background-color: #333;
+        }
+        .clock-number{  
+            position: absolute;  
+            width: 100%;  
+            height: 100%;  
+            text-align: center;  
+        }  
+        .clock-number:after{  
+            content:"";  
+            position:absolute;  
+            height:13px;  
+            width:3px;  
+            top:13%;  
+            background: #333;  
+
+        }  
+        .clock-number> div{  
+            padding: 12px;  
+        }  
+        .num1{transform: rotate(30deg)}
+        .num1 > div{transform: rotate(-30deg)}  
+        .num2{transform: rotate(60deg)}  
+        .num2 > div{transform: rotate(-60deg)}  
+        .num3{transform: rotate(90deg)}
+        .num3 > div{transform: rotate(-90deg)}  
+        .num4{transform: rotate(120deg)}
+        .num4 > div{transform: rotate(-120deg)}  
+        .num5{transform: rotate(150deg)}  
+        .num5 > div{transform: rotate(-150deg)}  
+        .num6{transform: rotate(180deg)}  
+        .num6 > div{transform: rotate(-180deg)}  
+        .num7{transform: rotate(210deg)}  
+        .num7 > div{transform: rotate(-210deg)}  
+        .num8{transform: rotate(240deg)}  
+        .num8 > div{transform: rotate(-240deg)}  
+        .num9{transform: rotate(270deg)}  
+        .num9 > div{transform: rotate(-270deg)}  
+        .num10{transform: rotate(300deg)}  
+        .num10 > div{transform: rotate(-300deg)}  
+        .num11{transform: rotate(330deg)}  
+        .num11 > div{transform: rotate(-330deg)}  
+        .num12{transform: rotate(360deg)}  
+        .num12 > div{transform: rotate(-360deg)}  
+
+        .hour{  
+            width: 100%;  
+            height: 100%;  
+            position: absolute;  
+
+            height: 20%;  
+            width:8px;  
+            background: #333;  
+        }  
+        .hour::after{
+            position: absolute;  
+            content: "";  
+            border-style: solid;  
+            border-width: 4px;  
+            border-color: transparent transparent #333 transparent;  
+            left: 50%;  
+            transform: translateX(-50%);  
+            top:-11%;  
+        }
+        .minute{  
+            position: absolute;  
+            height:30%;  
+            width: 4px;  
+            background: #333;  
+        }  
+        .minute::after{
+            position: absolute;  
+            content: "";  
+            border-style: solid;  
+            border-width: 4px;  
+            border-color: transparent transparent #333 transparent;  
+            left: 50%;  
+            transform: translateX(-50%);  
+            top:-6%;   
+        }
+        .second{  
+            width: 100%;  
+            height: 100%;  
+            position: absolute;  
+
+            height: 32%;  
+            width: 1px;  
+            background: #333;  
+
+        }  
+        .second::after{  
+            position: absolute;  
+            content: "";  
+            border-style: solid;  
+            border-width: 4px;  
+            border-color: transparent transparent #333 transparent;  
+            left: 50%;  
+            transform: translateX(-50%);  
+            top:-6%;  
+        }  
+        .current-day{  
+            position:absolute;  
+            font-size:12px;  
+            font-weight:bold;  
+            left:50%;  
+            transform:translateX(-50%);  
+            top:25%;  
+        }  
+        .current-seconds{  
+            position:absolute;  
+            font-size:12px;  
+            font-weight:bold;  
+            left:50%;  
+            transform:translateX(-50%);  
+            bottom:25%;  
+            background:#333;  
+            color:white;  
+            padding:4px;
+        }  
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            align-items: left;
+
+        }
+        /* body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        } */
+        /* .clock {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 10px solid black;
+            border-radius: 100%;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        } */
+
+        /* .hour {
+            width: 6px;
+            height: 50px;
+        } */
+        /* .minute {
+            width: 4px;
+            height: 70px;
+        } */
+        /* .second {
+            width: 2px;
+            height: 90px;
+            background-color: red;
+        } */
+        /* .minute-mark {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background-color: black;
+            top: 45%; 
+            left: 50%;
+            transform-origin: center bottom;
+        } */
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock">
+
+        <div class="hand hour" id="hour-hand"></div>
+        <div class="hand minute" id="minute-hand"></div>
+        <div class="hand second" id="second-hand"></div>
+
+        <div class="current-day"></div>  
+         <div class="current-seconds"></div>  
+        <div class="current-seconds"></div>  
+
+        <div class="clock-number num1"><div>1</div></div>  
+        <div class="clock-number num2"><div>2</div></div>  
+        <div class="clock-number num3"><div>3</div></div>  
+        <div class="clock-number num4"><div>4</div></div>  
+        <div class="clock-number num5"><div>5</div></div>  
+        <div class="clock-number num6"><div>6</div></div>  
+        <div class="clock-number num7"><div>7</div></div>  
+        <div class="clock-number num8"><div>8</div></div>  
+        <div class="clock-number num9"><div>9</div></div>  
+        <div class="clock-number num10"><div>10</div></div>  
+        <div class="clock-number num11"><div>11</div></div>  
+        <div class="clock-number num12"><div>12</div></div>  
+
+        </div>
+            <div class="controls">
+                <select id="timezone-select">
+                    <option value="UTC">UTC</option>
+                    <option value="America/New_York">New York (UTC-5)</option>
+                    <option value="Europe/London">London (UTC+0)</option>
+                    <option value="Europe/Paris">Paris (UTC+1)</option>
+                    <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+                    <option value="Australia/Sydney">Sydney (UTC+10)</option>
+                    <option value="America/Los_Angeles">Los Angeles (UTC-8)</option>
+                    <option value="America/Chicago">Chicago (UTC-6)</option>
+                    <option value="America/Denver">Denver (UTC-7)</option>
+                    <option value="Europe/Berlin">Berlin (UTC+1)</option>
+                    <option value="Europe/Moscow">Moscow (UTC+3)</option>
+                    <option value="Asia/Kolkata">Kolkata (UTC+5:30)</option>
+                    <option value="Asia/Shanghai">Shanghai (UTC+8)</option>
+                    <option value="Pacific/Auckland">Auckland (UTC+12)</option>
+                    <option value="Pacific/Fiji">Fiji (UTC+12)</option>
+                    <option value="Pacific/Guam">Guam (UTC+10)</option>
+                    <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+                    <option value="Asia/Seoul">Seoul (UTC+9)</option>
+                    <option value="Asia/Singapore">Singapore (UTC+8)</option>
+                    <option value="Asia/Shanghai">Shanghai (UTC+8)</option>
+                    <option value="Asia/Hong_Kong">Hong Kong (UTC+8)</option>
+                    <option value="Asia/Bangkok">Bangkok (UTC+7)</option>
+                    <option value="Asia/Jakarta">Jakarta (UTC+7)</option>
+                    <option value="Asia/Kolkata">Kolkata (UTC+5:30)</option>
+                    <option value="Asia/Dubai">Dubai (UTC+4)</option>
+                    <option value="Europe/Moscow">Moscow (UTC+3)</option>
+                    <option value="Europe/Istanbul">Istanbul (UTC+3)</option>
+                    <option value="Europe/Helsinki">Helsinki (UTC+2)</option>
+                    <option value="Europe/Athens">Athens (UTC+2)</option>
+                    <option value="Europe/Berlin">Berlin (UTC+1)</option>
+                    <option value="Europe/Paris">Paris (UTC+1)</option>
+                    <option value="Europe/London">London (UTC+0)</option>
+                    <option value="Africa/Johannesburg">Johannesburg (UTC+2)</option>
+                    <option value="Africa/Cairo">Cairo (UTC+2)</option>
+                    <option value="Africa/Lagos">Lagos (UTC+1)</option>
+                    <option value="Australia/Sydney">Sydney (UTC+10)</option>
+                    <option value="Australia/Melbourne">Melbourne (UTC+10)</option>
+                    <option value="Australia/Perth">Perth (UTC+8)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+            const hourHand = document.getElementById('hour-hand');
+            const minuteHand = document.getElementById('minute-hand');
+            const secondHand = document.getElementById('second-hand');
+            const timezoneSelect = document.getElementById('timezone-select');
+
+            function clockRotating() {
+                const now = new Date();
+                const selectedTimezone = timezoneSelect.value;
+                const options = { timeZone: selectedTimezone, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+                const timeString = now.toLocaleString('en-US', options);
+                const [hours, minutes, seconds] = timeString.split(':').map(Number);
+
+                const getSeconds = seconds / 60;
+                const getMinutes = (minutes + getSeconds) / 60;
+                const getHours = (hours % 12 + getMinutes) / 12;
+
+                secondHand.style.transform = "rotate(" + (getSeconds * 360) + "deg)";
+                minuteHand.style.transform = "rotate(" + (getMinutes * 360) + "deg)";
+                hourHand.style.transform = "rotate(" + (getHours * 360) + "deg)";
+
+                const localTime = new Date(now.toLocaleString('en-US', { timeZone: selectedTimezone }));
+                document.querySelector(".current-day").innerHTML = localTime.toDateString();
+                document.querySelector(".current-seconds").innerHTML = seconds;
+            }
+
+            timezoneSelect.addEventListener('change', clockRotating);
+            setInterval(clockRotating, 1000);
+            clockRotating(); // Initial call 
+        });
+    </script>
+
+</body>
+</html>

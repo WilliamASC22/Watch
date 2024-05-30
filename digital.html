@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+       .watch {
+            text-align: center;
+        }
+        .time-display {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .watch-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        select {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watch">
+        <div class="time-display" id="time-display">--:--:--</div>
+        <div class="controls">
+            <select id="timezone-select">
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">New York (UTC-5)</option>
+                <option value="Europe/London">London (UTC+0)</option>
+                <option value="Europe/Paris">Paris (UTC+1)</option>
+                <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+                <option value="Australia/Sydney">Sydney (UTC+10)</option>
+                <option value="America/Los_Angeles">Los Angeles (UTC-8)</option>
+                <option value="America/Chicago">Chicago (UTC-6)</option>
+                <option value="America/Denver">Denver (UTC-7)</option>
+                <option value="Europe/Berlin">Berlin (UTC+1)</option>
+                <option value="Europe/Moscow">Moscow (UTC+3)</option>
+                <option value="Asia/Kolkata">Kolkata (UTC+5:30)</option>
+                <option value="Asia/Shanghai">Shanghai (UTC+8)</option>
+                <option value="Pacific/Auckland">Auckland (UTC+12)</option>
+                <option value="Pacific/Fiji">Fiji (UTC+12)</option>
+                <option value="Pacific/Guam">Guam (UTC+10)</option>
+                <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+                <option value="Asia/Seoul">Seoul (UTC+9)</option>
+                <option value="Asia/Singapore">Singapore (UTC+8)</option>
+                <option value="Asia/Shanghai">Shanghai (UTC+8)</option>
+                <option value="Asia/Hong_Kong">Hong Kong (UTC+8)</option>
+                <option value="Asia/Bangkok">Bangkok (UTC+7)</option>
+                <option value="Asia/Jakarta">Jakarta (UTC+7)</option>
+                <option value="Asia/Kolkata">Kolkata (UTC+5:30)</option>
+                <option value="Asia/Dubai">Dubai (UTC+4)</option>
+                <option value="Europe/Moscow">Moscow (UTC+3)</option>
+                <option value="Europe/Istanbul">Istanbul (UTC+3)</option>
+                <option value="Europe/Helsinki">Helsinki (UTC+2)</option>
+                <option value="Europe/Athens">Athens (UTC+2)</option>
+                <option value="Europe/Berlin">Berlin (UTC+1)</option>
+                <option value="Europe/Paris">Paris (UTC+1)</option>
+                <option value="Europe/London">London (UTC+0)</option>
+                <option value="Africa/Johannesburg">Johannesburg (UTC+2)</option>
+                <option value="Africa/Cairo">Cairo (UTC+2)</option>
+                <option value="Africa/Lagos">Lagos (UTC+1)</option>
+                <option value="Australia/Sydney">Sydney (UTC+10)</option>
+                <option value="Australia/Melbourne">Melbourne (UTC+10)</option>
+                <option value="Australia/Perth">Perth (UTC+8)</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeDisplay = document.getElementById('time-display');
+            const timezoneSelect = document.getElementById('timezone-select');
+
+            function updateTime() {
+                const now = new Date();
+                const selectedTimezone = timezoneSelect.value;
+                const options = {
+                    timeZone: selectedTimezone,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+                timeDisplay.textContent = timeString;
+            }
+
+            timezoneSelect.addEventListener('change', updateTime);
+            setInterval(updateTime, 1000);
+            updateTime(); // Initial call to set the time immediately
+        });
+    </script>
+</body>
+</html>
